@@ -1,1 +1,1 @@
-﻿
+﻿# Scrabble Points Calculator 
