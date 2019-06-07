@@ -52,6 +52,8 @@
     <Compile Include="Properties\Main\Program.cs" />
     <Compile Include="Properties\Main\WordScore.cs" />
     <Compile Include="Properties\Tests\WordScoreTest.cs" />
+    <Compile Include="Properties\Main\LetterScore.cs" />
+    <Compile Include="Properties\Tests\LetterScoreTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
