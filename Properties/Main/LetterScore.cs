@@ -37,13 +37,11 @@ namespace Scrabble.Main
             { 'Z', 10 }
         };
 
-        public LetterScore(char letter)
-        {
-            thisLetter = letter; 
-        }
+        public LetterScore() { }
 
-        public int GetLetterScore()
+        public virtual int GetLetterScore(char letter)
         {
+            thisLetter = letter;
             InputLetterScore();
             return letterScore;
         }

@@ -7,7 +7,9 @@ namespace Scrabble.Main
     {
         public int totalPoints = 0;
         public WordScore wordScore = new WordScore();
+        public LetterScore letterScore = new LetterScore();
         public List<int> letterScoreArray = new List<int>();
+        public List<char> letterArray = new List<char>();
 
         public Game()
         {
@@ -33,9 +35,20 @@ namespace Scrabble.Main
             return letterScoreArray;
         }
 
-        public void InputLetterScoreArray(List<int> letterScore)
+        public void InputLetterScoreArray(char letter, LetterScore letterScore)
         {
-             letterScoreArray = letterScore;
+            InputLetterArray(letter);
+            letterScoreArray.Add(letterScore.GetLetterScore(letter));
+        }
+
+        public List<char> GetLetterArray()
+        {
+            return letterArray;
+        }
+
+        public void InputLetterArray(char letter)
+        {
+            letterArray.Add(letter);
         }
     }
 }

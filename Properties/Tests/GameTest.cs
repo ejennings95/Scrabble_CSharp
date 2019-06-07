@@ -25,5 +25,39 @@ namespace Scrabble.Tests
             game.InputTotalPoints();
             Assert.AreEqual(7, game.GetTotalPoints());
         }
+
+        [Test, Description("GetLetterScoreArray will store letters in letterArray")]
+        public void LetterArray()
+        {
+            LetterScore letterScore = Mock.Of<LetterScore>();
+            char letter1 = 'A';
+            char letter2 = 'B';
+            Game game = new Game();
+            Mock.Get(letterScore).Setup(s => s.GetLetterScore(letter1));
+            Mock.Get(letterScore).Setup(s => s.GetLetterScore(letter2));
+            game.InputLetterScoreArray(letter1, letterScore);
+            game.InputLetterScoreArray(letter2, letterScore);
+            Assert.AreEqual('A', game.GetLetterArray()[0]);
+            Assert.AreEqual('B', game.GetLetterArray()[1]);
+            Assert.AreEqual(10, game.GetLetterScoreArray()[1]);
+
+            Assert.AreEqual(2, game.GetLetterArray().Count);
+        }
+
+        [Test, Description("GetLetterScoreArray will return 1, 10 when A, Z is inputted")]
+        public void GetLetterScoreArray()
+        {
+            LetterScore letterScore = Mock.Of<LetterScore>();
+            char letter1 = 'A';
+            char letter2 = 'Z';
+            Game game = new Game();
+            Mock.Get(letterScore).Setup(s => s.GetLetterScore(letter1)).Returns(1);
+            Mock.Get(letterScore).Setup(s => s.GetLetterScore(letter2)).Returns(10);
+            game.InputLetterScoreArray(letter1, letterScore);
+            game.InputLetterScoreArray(letter2, letterScore);
+            Assert.AreEqual(10, game.GetLetterScoreArray()[1]);
+            Assert.AreEqual(1, game.GetLetterScoreArray()[0]);
+            Assert.AreEqual(2, game.GetLetterScoreArray().Count);
+        }
     }
 }
