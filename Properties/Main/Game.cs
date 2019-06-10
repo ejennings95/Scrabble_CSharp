@@ -25,9 +25,9 @@ namespace Scrabble.Main
             return totalPoints;
         }
 
-        public void InputTotalPoints()
+        public void InputTotalPoints(List<int> wordBonuses)
         {
-            totalPoints = wordScore.GetPoints(GetLetterScoreArray());
+            totalPoints = wordScore.GetPoints(GetLetterScoreArray(), wordBonuses);
         }
 
         public List<int> GetLetterScoreArray()

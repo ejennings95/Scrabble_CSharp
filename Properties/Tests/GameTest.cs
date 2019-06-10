@@ -19,10 +19,11 @@ namespace Scrabble.Tests
         public void InputTotalPoints()
         {
             List<int> letterPoints = new List<int>();
+            List<int> wordBonus = new List<int>();
             WordScore wordScore = Mock.Of<WordScore>();
             Game game = new Game(wordScore);
-            Mock.Get(wordScore).Setup(s => s.GetPoints(letterPoints)).Returns(7);
-            game.InputTotalPoints();
+            Mock.Get(wordScore).Setup(s => s.GetPoints(letterPoints, wordBonus)).Returns(7);
+            game.InputTotalPoints(wordBonus);
             Assert.AreEqual(7, game.GetTotalPoints());
         }
 
