@@ -41,6 +41,12 @@ namespace Scrabble.Main
             letterScoreArray.Add(letterScore.GetLetterScore(letter));
         }
 
+        public void InputLetterScoreArray(char letter, LetterScore letterScore, int letterBonus)
+        {
+            InputLetterArray(letter);
+            letterScoreArray.Add(letterScore.GetLetterScore(letter, letterBonus));
+        }
+
         public List<char> GetLetterArray()
         {
             return letterArray;

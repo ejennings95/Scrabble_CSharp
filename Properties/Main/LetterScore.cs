@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace Scrabble.Main
 {
@@ -41,14 +42,22 @@ namespace Scrabble.Main
 
         public virtual int GetLetterScore(char letter)
         {
-            thisLetter = letter;
-            InputLetterScore();
+            InputLetterScore(letter);
             return letterScore;
         }
 
-        public void InputLetterScore()
+        public virtual int GetLetterScore(char letter, int letterBonus)
         {
+            InputLetterScore(letter);
+            letterScore = letterScore * letterBonus;
+            return letterScore;
+        }
+
+        public void InputLetterScore(char letter)
+        {
+            thisLetter = letter;
             letterScore = Convert.ToInt32(points[thisLetter]);
         }
+
     }
 }

@@ -25,5 +25,26 @@ namespace Scrabble.Properties.Tests
             LetterScore letter = new LetterScore();
             Assert.AreEqual(10, letter.GetLetterScore('Z'));
         }
+
+        [Test, Description("A with double letter bonus should return letterscore 2")]
+        public void GetAPointsWithDoubleBonus()
+        {
+            LetterScore letter = new LetterScore();
+            Assert.AreEqual(2, letter.GetLetterScore('A', 2));
+        }
+
+        [Test, Description("F with double letter bonus should return letterscore 8")]
+        public void GetFPointsWithDoubleBonus()
+        {
+            LetterScore letter = new LetterScore();
+            Assert.AreEqual(8, letter.GetLetterScore('F', 2));
+        }
+
+        [Test, Description("Z with triple letter bonus should return letterscore 30")]
+        public void GetZPointsWithTripleBonus()
+        {
+            LetterScore letter = new LetterScore();
+            Assert.AreEqual(30, letter.GetLetterScore('Z', 3));
+        }
     }
 }
